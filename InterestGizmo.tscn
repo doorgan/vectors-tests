@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://InterestGizmo.gd" type="Script" id=1]
+
+[node name="InterestGizmo" type="Node2D"]
+script = ExtResource( 1 )
+radius = 50.0
+interest_segments = 16
