@@ -8,7 +8,7 @@ script = ExtResource( 2 )
 
 [node name="InterestGizmo" type="Node2D" parent="."]
 script = ExtResource( 1 )
-radius = 100.0
+radius = 50.0
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5

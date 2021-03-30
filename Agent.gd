@@ -36,13 +36,16 @@ func bh_avoid():
 			var distance = position.distance_to(danger.position)
 			var dir = danger.position - position
 			var dot = direction.normalized().dot(dir.normalized())
-			if distance < 500 and dot > 0:
-				danger_values.append(dot / (distance / 500))
+			if distance < 200 and dot > 0.65:
+				var distance_ratio = distance/200
+				var final_value = dot / distance_ratio
+				prints("dot: %s, dist: %s, value: %s" % [dot, distance_ratio, final_value])
+				danger_values.append(final_value)
 
 		var sum = 0
-
 		for value in danger_values:
 			sum += value
+
 		if danger_values.size() > 0:
 			danger_arr[i] = sum/danger_values.size()
 		else:

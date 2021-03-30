@@ -20,12 +20,16 @@ func draw_interest_segments():
 		var angle_point = deg2rad(i * angle_step)
 		var angle_vector = Vector2(cos(angle_point), sin(angle_point))
 		var segment_start = angle_vector * radius
-		var segment_length = radius/2 * (interest[i] - danger[i])
-		var segment_end = angle_vector * (radius + segment_length)
+		var interest_segment_length = radius/2 * max(0, interest[i] - danger[i])
+		var danger_segment_length = radius/2 * max(0, danger[i])
+		var interest_segment_end = angle_vector * (radius + interest_segment_length)
+		var danger_segment_end = angle_vector * (radius + danger_segment_length)
 
-		var color = (Color.green if i >= 1 else Color.red)
+		var color = (Color.green if i >= 1 else Color.blue)
 		
-		draw_line(segment_start, segment_end, color)
+		draw_line(segment_start, interest_segment_end, color)
+		# draw_line(segment_start, danger_segment_end, Color.red)
+		
 
 func draw_circle_outline(center, rad, color):
 	var nb_points = 32
