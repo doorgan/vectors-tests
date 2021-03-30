@@ -5,21 +5,32 @@
 [node name="Node2D" type="Node2D"]
 
 [node name="Agent" parent="." instance=ExtResource( 1 )]
-position = Vector2( 332.554, 322.807 )
+position = Vector2( 332.554, 319.031 )
+rotation = 2.16499
 
 [node name="Interest" type="Node2D" parent="." groups=[
 "Interest",
 ]]
-position = Vector2( 427.048, 129.352 )
+position = Vector2( 421.292, 282.068 )
 
 [node name="Polygon2D" type="Polygon2D" parent="Interest"]
 position = Vector2( -1.52588e-05, -1.25992 )
 polygon = PoolVector2Array( 4.01614, -8.64719, 11.5928, 3.41928, -4.68295, 12.1183, -9.73404, -5.56042 )
 
+[node name="Danger" type="Node2D" parent="." groups=[
+"Danger",
+]]
+position = Vector2( 198.538, 217.884 )
+
+[node name="Polygon2D" type="Polygon2D" parent="Danger"]
+position = Vector2( -1.52588e-05, -1.25992 )
+color = Color( 1, 0, 0, 1 )
+polygon = PoolVector2Array( 4.01614, -8.64719, 11.5928, 3.41928, -4.68295, 12.1183, -9.73404, -5.56042 )
+
 [node name="Interest2" type="Node2D" parent="." groups=[
 "Interest",
 ]]
-position = Vector2( 415.709, 126.832 )
+position = Vector2( 332.648, 423.668 )
 
 [node name="Polygon2D" type="Polygon2D" parent="Interest2"]
 position = Vector2( -1.52588e-05, -1.25992 )

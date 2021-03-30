@@ -12,6 +12,7 @@ func _draw():
 
 func draw_interest_segments():
 	var interest = get_parent().interest
+	var danger = get_parent().danger
 	var target = get_viewport().get_mouse_position() - global_position
 	var angle_step = 360.0 / interest.size()
 	
@@ -19,10 +20,10 @@ func draw_interest_segments():
 		var angle_point = deg2rad(i * angle_step)
 		var angle_vector = Vector2(cos(angle_point), sin(angle_point))
 		var segment_start = angle_vector * radius
-		var segment_length = max(0, radius/2 * interest[i])
+		var segment_length = radius/2 * (interest[i] - danger[i])
 		var segment_end = angle_vector * (radius + segment_length)
 
-		var color = (Color.green if i > 1 else Color.red)
+		var color = (Color.green if i >= 1 else Color.red)
 		
 		draw_line(segment_start, segment_end, color)
 

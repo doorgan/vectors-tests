@@ -15,32 +15,67 @@ func _init():
 		directions[i] = Vector2.RIGHT.rotated(angle)
 		
 func update_interests():
-	bh_chase()
-	print(interest)
+	var interests = bh_chase()
+	var dangers = bh_avoid()
+	interest = interests
+	danger = dangers
+	print(dangers)
 
 func bh_avoid():
-	pass
+	var danger_arr = []
+	danger_arr.resize(directions.size())
+	
+	var dangers = get_tree().get_nodes_in_group("Danger")
+	
+	for i in directions.size():
+		var direction = directions[i]
+
+		var danger_values = []
+
+		for danger in dangers:
+			var distance = position.distance_to(danger.position)
+			var dir = danger.position - position
+			var dot = direction.normalized().dot(dir.normalized())
+			if distance < 500 and dot > 0:
+				danger_values.append(dot / (distance / 500))
+
+		var sum = 0
+
+		for value in danger_values:
+			sum += value
+		if danger_values.size() > 0:
+			danger_arr[i] = sum/danger_values.size()
+		else:
+			danger_arr[i] = 0
+
+	return normalize(danger_arr)
 	
 func bh_chase():
+	var interest_arr = []
+	interest_arr.resize(directions.size())
 	var interests = get_tree().get_nodes_in_group("Interest")
 	for i in directions.size():
 		var direction = directions[i]
+
 		var interest_values = []
+
 		for interest in interests:
 			var distance = position.distance_to(interest.position)
 			var dir = interest.position - position
 			var dot = direction.normalized().dot(dir.normalized())
-			interest_values.append(distance * dot)
-		var sum = 0
-		
-		var values = _normalize(interest_values)
-		
-		for value in values:
-			sum += value
-		
-		interest[i] = sum/values.size()
-	return interest
+			if distance < 500 and dot > 0:
+				interest_values.append(dot / (distance / 500))
 
+		var sum = 0
+
+		for value in interest_values:
+			sum += value
+		if interest_values.size() > 0:
+			interest_arr[i] = sum/interest_values.size()
+		else:
+			interest_arr[i] = 0
+
+	return normalize(interest_arr)
 
 func _max(list):
 	var ret
@@ -62,20 +97,17 @@ func _min(list):
 				ret = val
 	return ret
 	
-func _normalize(list):
-	print("=normalize=")
-	print(list)
+func normalize(list: Array):	
 	var maxim = _max(list)
-	var minim = _min(list)
-	
-	var average = (minim + maxim) / 2
-	var rang = (maxim - minim) / 2
+	maxim = (1 if not maxim else maxim)
 	
 	var ret = []
 	
 	for x in list:
-		var val = (x - average) / rang
+		var val = max(0, x) / (maxim / 0.8)
 		ret.append(val)
-	print(ret)
-	print("=end normalize=")
+
 	return ret
+
+func maprange(a1, a2, b1, b2, s):
+	return b1 + (s-a1)*(b2-b1)/(a2-a1)
