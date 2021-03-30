@@ -1,8 +1,33 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://InterestGizmo.gd" type="Script" id=1]
+[ext_resource path="res://Agent.gd" type="Script" id=2]
 
-[node name="InterestGizmo" type="Node2D"]
+[node name="Agent" type="Node2D"]
+position = Vector2( 394.055, 244.224 )
+script = ExtResource( 2 )
+
+[node name="InterestGizmo" type="Node2D" parent="."]
 script = ExtResource( 1 )
-radius = 50.0
-interest_segments = 16
+radius = 100.0
+interest_segments = 12
+
+[node name="Danger" type="Node2D" parent="." groups=[
+"Danger",
+]]
+position = Vector2( 352.763, 9.09544 )
+
+[node name="Interest" type="Node2D" parent="." groups=[
+"Interest",
+]]
+position = Vector2( -1.71277, 132.889 )
+
+[node name="Interest2" type="Node2D" parent="." groups=[
+"Interest",
+]]
+position = Vector2( 1.17685, 65.8303 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+[connection signal="timeout" from="Timer" to="." method="update_interests"]
