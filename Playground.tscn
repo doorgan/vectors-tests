@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://InterestGizmo.tscn" type="PackedScene" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 69.0737, 10 )
 
 [node name="Node2D" type="Node2D"]
 position = Vector2( 22.6923, -6.67419 )
@@ -11,7 +14,7 @@ position = Vector2( 332.554, 319.031 )
 [node name="Interest" type="Node2D" parent="." groups=[
 "Interest",
 ]]
-position = Vector2( 283.803, 213.991 )
+position = Vector2( 251.694, 347.182 )
 
 [node name="Polygon2D" type="Polygon2D" parent="Interest"]
 position = Vector2( -1.52588e-05, -1.25992 )
@@ -20,7 +23,7 @@ polygon = PoolVector2Array( 4.01614, -8.64719, 11.5928, 3.41928, -4.68295, 12.11
 [node name="Danger" type="Node2D" parent="." groups=[
 "Danger",
 ]]
-position = Vector2( 467.559, 188.339 )
+position = Vector2( 257.179, 257.119 )
 
 [node name="Polygon2D" type="Polygon2D" parent="Danger"]
 position = Vector2( -1.52588e-05, -1.25992 )
@@ -35,3 +38,13 @@ position = Vector2( 452.114, 320.885 )
 [node name="Polygon2D" type="Polygon2D" parent="Interest2"]
 position = Vector2( -1.52588e-05, -1.25992 )
 polygon = PoolVector2Array( 4.01614, -8.64719, 11.5928, 3.41928, -4.68295, 12.1183, -9.73404, -5.56042 )
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2( 402.704, 322.038 )
+
+[node name="Area2D" type="StaticBody2D" parent="Node2D"]
+rotation = 0.721444
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Area2D"]
+rotation = 0.855313
+shape = SubResource( 1 )

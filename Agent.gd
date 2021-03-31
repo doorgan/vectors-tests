@@ -4,6 +4,7 @@ var max_dist = 200.0
 
 var interest = []
 var danger = []
+var walls = []
 var directions = []
 
 func _init():
@@ -11,15 +12,20 @@ func _init():
 	for i in range(12):
 		interest.append(0)
 		danger.append(0)
+		walls.append(0)
 		var angle = (i * 2 * PI) / 12
 		directions[i] = Vector2.RIGHT.rotated(angle)
 		
 func update_interests():
 	var interests = bh_chase()
 	var dangers = bh_avoid()
-	interest = interests
-	danger = dangers
-	print(dangers)
+	var wall = bh_wall()
+	var result = []
+	result.resize(12)
+	for i in range(12):
+		result[i] = max(0, interests[i] - dangers[i])
+		result[i] = 0 if wall[i] else result[i]
+		interest = result
 
 func bh_avoid():
 	var danger_arr = []
@@ -38,8 +44,7 @@ func bh_avoid():
 			var dot = direction.normalized().dot(dir.normalized())
 			if distance < 200 and dot > 0.65:
 				var distance_ratio = distance/200
-				var final_value = dot / distance_ratio
-				prints("dot: %s, dist: %s, value: %s" % [dot, distance_ratio, final_value])
+				var final_value = dot - distance_ratio
 				danger_values.append(final_value)
 
 		var sum = 0
@@ -51,7 +56,7 @@ func bh_avoid():
 		else:
 			danger_arr[i] = 0
 
-	return normalize(danger_arr)
+	return danger_arr
 	
 func bh_chase():
 	var interest_arr = []
@@ -80,6 +85,16 @@ func bh_chase():
 
 	return normalize(interest_arr)
 
+func bh_wall():
+	var walls = []
+	walls.resize(12)
+	var space_state = get_world_2d().direct_space_state
+	for i in range(12):
+		var result = space_state.intersect_ray(global_position, global_position + directions[i] * 100, [self])
+		walls[i] = 0 if not result else 1 - result.position.distance_to(position)/100
+
+	return walls
+
 func _max(list):
 	var ret
 	for val in list:
@@ -87,16 +102,6 @@ func _max(list):
 			ret = val
 		else:
 			if val > ret:
-				ret = val
-	return ret
-
-func _min(list):
-	var ret
-	for val in list:
-		if not ret:
-			ret = val
-		else:
-			if val < ret:
 				ret = val
 	return ret
 	
@@ -111,6 +116,3 @@ func normalize(list: Array):
 		ret.append(val)
 
 	return ret
-
-func maprange(a1, a2, b1, b2, s):
-	return b1 + (s-a1)*(b2-b1)/(a2-a1)
