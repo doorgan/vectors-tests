@@ -1,0 +1,9 @@
+[gd_scene format=2]
+
+[node name="Interest" type="Node2D" groups=[
+"Interest",
+]]
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2( -1.52588e-05, -1.25992 )
+polygon = PoolVector2Array( 4.01614, -8.64719, 11.5928, 3.41928, -4.68295, 12.1183, -9.73404, -5.56042 )
