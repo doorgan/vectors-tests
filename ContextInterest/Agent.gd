@@ -15,7 +15,7 @@ func _init():
 		walls.append(0)
 		var angle = (i * 2 * PI) / 12
 		directions[i] = Vector2.RIGHT.rotated(angle)
-		
+
 func update_interests():
 	var interests = bh_chase()
 	var dangers = bh_avoid()
@@ -30,9 +30,9 @@ func update_interests():
 func bh_avoid():
 	var danger_arr = []
 	danger_arr.resize(directions.size())
-	
+
 	var dangers = get_tree().get_nodes_in_group("Danger")
-	
+
 	for i in directions.size():
 		var direction = directions[i]
 
@@ -57,7 +57,7 @@ func bh_avoid():
 			danger_arr[i] = 0
 
 	return danger_arr
-	
+
 func bh_chase():
 	var interest_arr = []
 	interest_arr.resize(directions.size())
@@ -104,13 +104,13 @@ func _max(list):
 			if val > ret:
 				ret = val
 	return ret
-	
-func normalize(list: Array):	
+
+func normalize(list: Array):
 	var maxim = _max(list)
 	maxim = (1 if not maxim else maxim)
-	
+
 	var ret = []
-	
+
 	for x in list:
 		var val = max(0, x) / (maxim / 0.8)
 		ret.append(val)

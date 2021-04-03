@@ -9,10 +9,20 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "KinematicBody2D",
+"class": "Agent",
+"language": "GDScript",
+"path": "res://Agent/Agent.gd"
+}, {
 "base": "SteeringBehavior",
 "class": "SB_Arrive",
 "language": "GDScript",
 "path": "res://Agent/SB_Arrive.gd"
+}, {
+"base": "SteeringBehavior",
+"class": "SB_AvoidObstacles",
+"language": "GDScript",
+"path": "res://Agent/SB_AvoidObstacles.gd"
 }, {
 "base": "SteeringBehavior",
 "class": "SB_Seek",
@@ -30,7 +40,9 @@ _global_script_classes=[ {
 "path": "res://Agent/SteeringOutput.gd"
 } ]
 _global_script_class_icons={
+"Agent": "",
 "SB_Arrive": "",
+"SB_AvoidObstacles": "",
 "SB_Seek": "",
 "SteeringBehavior": "",
 "SteeringOutput": ""
