@@ -14,11 +14,6 @@ func _input(event):
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.is_pressed():
 		current_target = event.position
 
-func move_to(target: Vector2, _delta: float):
-	var steering = SB_Arrive.get_steering(self, target, 120)
-	var target_velocity = velocity + steering.velocity
-	target_velocity = target_velocity.clamped(max_speed)
-	if steering.velocity.length() > 0:
-		velocity = move_and_slide(target_velocity)
-	else:
-		velocity = Vector2.ZERO
+func move_to(target: Vector2, delta: float):
+	var steering = SB_Arrive.get_steering(self, target, 150)
+	velocity = move_and_slide((velocity + steering.velocity).clamped(max_speed))
