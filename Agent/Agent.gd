@@ -48,6 +48,9 @@ func move_to(target: Vector2, delta: float):
 	velocity = move_and_slide(velocity)
 
 func _draw():
+	if Engine.editor_hint:
+		DrawUtils.draw_circle_outline(self, global_position - position, bounding_radius, Color.aqua)
+
 	if !_debug_movement:
 		return
 

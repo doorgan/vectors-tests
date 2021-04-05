@@ -17,6 +17,7 @@ position = Vector2( 216, 176 )
 
 [node name="Obstacle" parent="." instance=ExtResource( 2 )]
 position = Vector2( 399.574, 140.326 )
+bounding_radius = 60.0
 
 [node name="Obstacle15" parent="." instance=ExtResource( 2 )]
 position = Vector2( 726.578, 186.361 )

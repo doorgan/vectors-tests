@@ -15,7 +15,7 @@ func draw_interest_segments():
 	# var danger = get_parent().danger
 	var target = get_viewport().get_mouse_position() - global_position
 	var angle_step = 360.0 / interest.size()
-	
+
 	for i in interest.size():
 		var angle_point = deg2rad(i * angle_step)
 		var angle_vector = Vector2(cos(angle_point), sin(angle_point))
@@ -27,10 +27,10 @@ func draw_interest_segments():
 		# var danger_segment_end = angle_vector.rotated(0.03) * (radius + danger_segment_length)
 
 		var color = (Color.green if i >= 1 else Color.blue)
-		
+
 		draw_line(segment_start, interest_segment_end, color)
 		# draw_line(segment_start_d, danger_segment_end, Color.red)
-		
+
 
 func draw_circle_outline(center, rad, color):
 	var nb_points = 32
