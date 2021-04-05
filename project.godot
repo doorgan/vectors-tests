@@ -14,6 +14,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Agent/Agent.gd"
 }, {
+"base": "Area2D",
+"class": "BoundingArea",
+"language": "GDScript",
+"path": "res://Agent/BoundingArea.gd"
+}, {
 "base": "SteeringBehavior",
 "class": "SB_Arrive",
 "language": "GDScript",
@@ -29,6 +34,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Agent/SB_Seek.gd"
 }, {
+"base": "SteeringBehavior",
+"class": "SB_Separation",
+"language": "GDScript",
+"path": "res://Agent/SB_Separation.gd"
+}, {
 "base": "Reference",
 "class": "SteeringBehavior",
 "language": "GDScript",
@@ -41,9 +51,11 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Agent": "",
+"BoundingArea": "",
 "SB_Arrive": "",
 "SB_AvoidObstacles": "",
 "SB_Seek": "",
+"SB_Separation": "",
 "SteeringBehavior": "",
 "SteeringOutput": ""
 }

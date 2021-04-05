@@ -1,74 +1,81 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Agent/Agent.tscn" type="PackedScene" id=1]
-
-[sub_resource type="CircleShape2D" id=1]
+[ext_resource path="res://Obstacle.tscn" type="PackedScene" id=2]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Agent" parent="." instance=ExtResource( 1 )]
 position = Vector2( 192, 128 )
 
-[node name="Obstacle" type="StaticBody2D" parent="." groups=[
-"obstacle",
-]]
-position = Vector2( 392, 144 )
+[node name="Agent8" parent="." instance=ExtResource( 1 )]
+position = Vector2( 784.1, 245.468 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacle"]
-shape = SubResource( 1 )
+[node name="Agent9" parent="." instance=ExtResource( 1 )]
+position = Vector2( 817.435, 294.677 )
 
-[node name="Obstacle2" type="StaticBody2D" parent="." groups=[
-"obstacle",
-]]
-position = Vector2( 448, 192 )
+[node name="Agent10" parent="." instance=ExtResource( 1 )]
+position = Vector2( 842.834, 228.006 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacle2"]
-shape = SubResource( 1 )
+[node name="Agent4" parent="." instance=ExtResource( 1 )]
+position = Vector2( 265.02, 120.063 )
 
-[node name="Obstacle6" type="StaticBody2D" parent="." groups=[
-"obstacle",
-]]
-position = Vector2( 536, 176 )
+[node name="Agent5" parent="." instance=ExtResource( 1 )]
+position = Vector2( 215.811, 186.734 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacle6"]
-shape = SubResource( 1 )
+[node name="Agent6" parent="." instance=ExtResource( 1 )]
+position = Vector2( 112.63, 185.146 )
 
-[node name="Obstacle7" type="StaticBody2D" parent="." groups=[
-"obstacle",
-]]
-position = Vector2( 560, 96 )
+[node name="Agent7" parent="." instance=ExtResource( 1 )]
+position = Vector2( 76.1198, 124.825 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacle7"]
-shape = SubResource( 1 )
+[node name="Agent2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 158.146, 245.599 )
 
-[node name="Obstacle8" type="StaticBody2D" parent="." groups=[
-"obstacle",
-]]
-position = Vector2( 640, 152 )
+[node name="Agent3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 297.126, 209.963 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacle8"]
-shape = SubResource( 1 )
+[node name="Obstacle" parent="." instance=ExtResource( 2 )]
+position = Vector2( 399.574, 140.326 )
 
-[node name="Obstacle3" type="StaticBody2D" parent="." groups=[
-"obstacle",
-]]
-position = Vector2( 480, 128 )
+[node name="Obstacle15" parent="." instance=ExtResource( 2 )]
+position = Vector2( 726.578, 186.361 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacle3"]
-shape = SubResource( 1 )
+[node name="Obstacle2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 441.497, 199.154 )
 
-[node name="Obstacle4" type="StaticBody2D" parent="." groups=[
-"obstacle",
-]]
-position = Vector2( 232, 288 )
+[node name="Obstacle3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 479.681, 129.858 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacle4"]
-shape = SubResource( 1 )
+[node name="Obstacle4" parent="." instance=ExtResource( 2 )]
+position = Vector2( 540.492, 177.941 )
 
-[node name="Obstacle5" type="StaticBody2D" parent="." groups=[
-"obstacle",
-]]
-position = Vector2( 488, 360 )
+[node name="Obstacle5" parent="." instance=ExtResource( 2 )]
+position = Vector2( 563.12, 94.5025 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacle5"]
-shape = SubResource( 1 )
+[node name="Obstacle6" parent="." instance=ExtResource( 2 )]
+position = Vector2( 638.073, 146.828 )
+
+[node name="Obstacle7" parent="." instance=ExtResource( 2 )]
+position = Vector2( 789.394, 104.402 )
+
+[node name="Obstacle8" parent="." instance=ExtResource( 2 )]
+position = Vector2( 851.619, 262.794 )
+
+[node name="Obstacle9" parent="." instance=ExtResource( 2 )]
+position = Vector2( 734.24, 366.032 )
+
+[node name="Obstacle10" parent="." instance=ExtResource( 2 )]
+position = Vector2( 505.137, 332.09 )
+
+[node name="Obstacle11" parent="." instance=ExtResource( 2 )]
+position = Vector2( 305.733, 446.642 )
+
+[node name="Obstacle12" parent="." instance=ExtResource( 2 )]
+position = Vector2( 93.6007, 343.404 )
+
+[node name="Obstacle13" parent="." instance=ExtResource( 2 )]
+position = Vector2( 233.608, 347.647 )
+
+[node name="Obstacle14" parent="." instance=ExtResource( 2 )]
+position = Vector2( 560.291, 465.026 )
